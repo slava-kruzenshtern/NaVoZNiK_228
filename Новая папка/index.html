@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HaBo3HuK_228</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#050505;color:#d6d6d6}
+body{font-family:"Courier New",monospace;display:flex;align-items:center;justify-content:center;padding:30px}
+.wrap{width:min(700px,100%);border:1px solid #292929;padding:42px 38px;background:#080808;box-shadow:0 0 35px rgba(255,255,255,.025)}
+.logo{font-size:42px;letter-spacing:12px;color:#eee;text-align:center;margin-bottom:20px}
+.subtitle{text-align:center;color:#AAA;font-size:12px;letter-spacing:3px;margin-bottom:42px}
+.line{height:1px;background:#292929;margin:25px 0 32px}
+.prompt{text-align:center;color:#777;font-size:20px;line-height:1.8;margin-bottom:25px}
+.fields{display:grid;gap:14px}
+.field{display:flex;align-items:center;border:2px solid #242424;background:#030303;transition:.2s}
+.field:focus-within{border-color:#777}
+.num{width:55px;text-align:center;color:#777;border-right:1px solid #222;padding:14px 0;font-size:12px}
+input{flex:1;background:transparent;border:0;outline:0;color:#eee;font:15px "Courier New",monospace;padding:14px;text-transform:uppercase;letter-spacing:2px}
+input::placeholder{color:#777}
+button{width:100%;margin-top:25px;background:#ddd;color:#050505;border:0;padding:15px;font:12px "Courier New",monospace;letter-spacing:4px;cursor:pointer}
+button:hover{background:#fff}
+#status{height:40px;text-align:center;margin-top:22px;font-size:20px;color:#AAA}
+.footer{text-align:center;margin-top:38px;color:#666;font-size:20px;letter-spacing:2px}
+.success{color:#07ed07!important}
+.error{color:#ff0000!important}
+@media(max-width:500px){.wrap{padding:30px 20px}.logo{font-size:35px;letter-spacing:8px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="logo">ВИВА!<br>
+                    ВОВЧИК!<br>
+                    БАРМАЛЕЙ!</div>
+  <div class="subtitle">С ДВАДЦАТИ-С-ЧЕМ-ТО-ЛЕТИЕМ!</div>
+  <div class="line"></div>
+
+  <div class="prompt">
+    ХОЧЕШЬ ЗАЕБАТЬСЯ?<br>
+    НАЙДИ ПЯТЬ КЛЮЧЕЙ!<br>
+    <span style="color:#aaa">ПОЛУЧИ ЦЕЛОЕ НИХУЯ!</span>
+  </div>
+
+  <form id="gate">
+    <div class="fields">
+      <label class="field"><span class="num">01</span><input id="p1" type="password" autocomplete="off" spellcheck="false" placeholder="KEY_01"></label>
+      <label class="field"><span class="num">02</span><input id="p2" type="password" autocomplete="off" spellcheck="false" placeholder="KEY_02"></label>
+      <label class="field"><span class="num">03</span><input id="p3" type="password" autocomplete="off" spellcheck="false" placeholder="KEY_03"></label>
+      <label class="field"><span class="num">04</span><input id="p4" type="password" autocomplete="off" spellcheck="false" placeholder="KEY_04"></label>
+      <label class="field"><span class="num">05</span><input id="p5" type="password" autocomplete="off" spellcheck="false" placeholder="KEY_05"></label>
+    </div>
+    <button type="submit">ПРОВЕРКА НА ДОЛБОЕБА</button>
+  </form>
+
+  <div id="status"></div>
+  <div class="footer">СЧАСТЛИВЫХ ВАМ<br>
+ГОЛОДНЫХ ИГР!!!</div>
+</main>
+
+<script>
+// ============================================
+// CHANGE THE FIVE PASSWORDS HERE
+// ============================================
+const KEYS = [
+  "RAVEN",
+  "CAESAR",
+  "ORACLE",
+  "3301",
+  "ASCENSION"
+];
+
+const form = document.getElementById("gate");
+const status = document.getElementById("status");
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const entered = [1,2,3,4,5].map(n =>
+    document.getElementById("p"+n).value.trim().toUpperCase()
+  );
+
+  const correct = entered.every((value, i) => value === KEYS[i]);
+
+  if(correct){
+    status.className = "success";
+    status.textContent = "ЕБАТЬ КРАСАВЧИК !!!";
+    setTimeout(() => {
+      window.location.href = "next.html";
+    }, 900);
+  } else {
+    status.className = "error";
+    status.textContent = "АХАХАХАХА ДОЛБОЕБ !!!";
+    form.animate(
+      [{transform:"translateX(-4px)"},{transform:"translateX(4px)"},{transform:"translateX(0)"}],
+      {duration:180}
+    );
+  }
+});
+</script>
+</body>
+</html>
