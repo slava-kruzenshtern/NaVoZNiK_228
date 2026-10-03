@@ -64,25 +64,26 @@ justify-content:center;padding:30px}
   line-height: 1.2;
   text-align: right;}
 
-.image-left {
+.text-box {
     display: flex;
     align-items: center;
     gap: 25px;
-    margin: 30px 0;}
+
+    border: 2px solid #292929;
+    background: #030303;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+
+    color: #aaa;
+    font-size: 17px;
+    line-height: 1.2;
+    text-align: left;}
 .side-image {
     width: 120px;
     height: auto;
     flex-shrink: 0;}
-
-.text-box {
-  border: 2px solid #292929;
-  background: #030303;
-  padding: 20px 25px;
-  margin-bottom: 25px;
-  color: #aaa;
-  font-size: 17px;
-  line-height: 1.2;
-  text-align: left;}
+.text-content {
+    flex: 1;}
 
 .footer{text-align:center;
   margin-top:38px;
@@ -148,13 +149,13 @@ button:hover{background:#ccc}
     — Армин, «Атака Титанов»
 </div>
 
-<div class="image-left">
+<div class="text-box">
     <img src="./images/taro-tower.jpg" class="side-image">
-    
-    <div class="text-box">
-    Ну тут типа загадка будет какая-то.<br>
-    Че написать пока хуй знает.<br>
-    Давайте думать, подсказывайте.
+
+    <div class="text-content">
+        Ну тут типа загадка будет какая-то.<br>
+        Че написать пока хуй знает.<br>
+        Давайте думать, подсказывайте.
     </div>
 </div>
 
