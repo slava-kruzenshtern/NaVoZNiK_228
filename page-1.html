@@ -29,6 +29,11 @@ justify-content:center;padding:30px}
   background:#080808;
   box-shadow:0 0 35px rgba(255,255,255,.025)}
 
+.line{
+  height:2px;
+  background:#383838;
+  margin:12px 0 12px}
+
 .prompt-1{
   text-align:center;
   color:#777;
@@ -45,15 +50,39 @@ justify-content:center;padding:30px}
   line-height:1.8;
   margin-bottom:10px}
 
+.citata {
+  margin-bottom: 10px;
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: left;}
+
+.autor {
+  margin-bottom: 10px;
+  color: #777;
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: right;}
+
+.image-left {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin: 30px 0;}
+.side-image {
+    width: 120px;
+    height: auto;
+    flex-shrink: 0;}
+
 .text-box {
   border: 2px solid #292929;
   background: #030303;
   padding: 20px 25px;
   margin-bottom: 25px;
-  color: #888;
+  color: #aaa;
   font-size: 17px;
   line-height: 1.2;
-  text-align: center;}
+  text-align: left;}
 
 .footer{text-align:center;
   margin-top:38px;
@@ -109,10 +138,24 @@ button:hover{background:#ccc}
     ЗАГАДКА №1
   </div>
 
-<div class="text-box">
+<div class="line"></div>
+
+<div class="citata">
+    «Тот, кто не готов идти на жертвы, не способен ничего изменить. <br>
+    Чтобы победить чудовище, ты должен отбросить человечность…»
+</div>
+<div class="autor">
+    — Армин, «Атака Титанов»
+</div>
+
+<div class="image-left">
+    <img src="./images/taro-tower.jpg" class="side-image">
+    
+    <div class="text-box">
     Ну тут типа загадка будет какая-то.<br>
     Че написать пока хуй знает.<br>
     Давайте думать, подсказывайте.
+    </div>
 </div>
 
   <form id="gate">
