@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Загадка №4</title>
+
+<style>
+
+@font-face 
+{font-family: "Courier Prime";
+src: url("./fonts/couriercyrps.ttf") format("truetype");
+font-weight: 400;}
+@font-face 
+{font-family: "Courier Prime";
+src: url("./fonts/couriercyrps_bold.ttf") format("truetype");
+font-weight: 700;}
+* {font-family: "Courier Prime" !important;}
+
+* {box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#050505;color:#d6d6d6}
+body{font-family:"Courier New",monospace;display:flex;align-items:center;
+justify-content:center;padding:30px}
+
+.wrap{
+  width:min(700px,100%);
+  border:1px solid #292929;
+  padding:42px 38px;
+  background:#080808;
+  box-shadow:0 0 35px rgba(255,255,255,.025)}
+
+.prompt-1{
+  text-align:center;
+  color:#777;
+  font-size:20px;
+  line-height:1.8;
+  margin-bottom:25px}
+
+.prompt-2{
+  text-align:center;
+  color:#aaa;
+  font-size:22px;
+  font-weight: 700;
+  letter-spacing:1px;
+  line-height:1.8;
+  margin-bottom:10px}
+
+.text-box {
+  border: 2px solid #292929;
+  background: #030303;
+  padding: 20px 25px;
+  margin-bottom: 25px;
+  color: #888;
+  font-size: 17px;
+  line-height: 2;
+  text-align: center;}
+
+.footer{text-align:center;
+  margin-top:38px;
+  color:#777;
+  font-size:20px;
+  letter-spacing:2px}
+
+.puzzle-image 
+  {display: flex;
+  justify-content: center;
+  margin: 30px auto;}
+.puzzle-image img 
+  {width: 100px;
+  max-width: 90%;
+  height: auto;
+  display: block;
+  box-sizing: border-box;}
+
+.small{
+  color:#777;
+  font-size:10px;
+  letter-spacing:2px;
+  text-align:center}
+
+.fields{display:grid;gap:14px}
+.field{display:flex;align-items:center;border:2px solid #242424;background:#030303;transition:.2s}
+.field:focus-within{border-color:#777}
+.num{width:55px;text-align:center;color:#777;border-right:1px solid #222;padding:14px 0;font-size:12px}
+input{flex:1;background:transparent;border:0;outline:0;color:#eee;
+  font:15px "Courier New",monospace;padding:14px;text-transform:uppercase;letter-spacing:2px}
+input::placeholder{color:#777}
+button{width:100%;margin-top:25px;background:#aaa;color:#050505;border:0;padding:15px;
+  font:12px "Courier New",monospace;font-weight:700;letter-spacing:4px;cursor:pointer}
+button:hover{background:#aaa}
+#status{height:40px;text-align:center;margin-top:22px;font-size:20px;color:#AAA}
+.success{color:#07ed07!important}
+.error{color:#ff0000!important}
+
+@media(max-width:500px){
+  .wrap{padding:30px 20px}
+  .logo{font-size:30px;letter-spacing:8px}}
+
+</style>
+
+</head>
+
+
+
+<body>
+<main class="wrap">
+  
+  <div class="prompt-2">
+    ЗАГАДКА №4
+  </div>
+
+<div class="text-box">
+    Ну тут типа загадка будет какая-то.<br>
+    Че написать пока хуй знает.<br>
+    Давайте думать, подсказывайте.
+</div>
+
+  <form id="gate">
+    <div class="fields">
+      <label class="field"><span class="num">04</span>
+        <input id="p4" type="password" autocomplete="off" spellcheck="false" placeholder="KEY_04"></label>
+    </div>
+    <button type="submit">ПРОВЕРКА НА ДОЛБОЕБА</button>
+  </form>
+
+  <div id="status"></div>
+
+<div class="puzzle-image"> 
+      <img src="./images/navoznik 1.png"></div>
+
+  <div class="small">by "ЛИСЫ да ПЕСЫ"</div>
+
+</main>
+
+
+
+<script>
+// ============================================
+// CHANGE THE FIVE PASSWORDS HERE
+// ============================================
+const KEYS = [
+  "444"
+];
+
+const form = document.getElementById("gate");
+const status = document.getElementById("status");
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const entered = [4].map(n =>
+    document.getElementById("p"+n).value.trim().toUpperCase()
+  );
+
+  const correct = entered.every((value, i) => value === KEYS[i]);
+
+  if(correct){
+    status.className = "success";
+    status.textContent = "ДАЛ ДАЛ УШЕЛ !!!";
+    setTimeout(() => {
+      window.location.href = "page-5.html";
+    }, 1000);
+  } else {
+    status.className = "error";
+    status.textContent = "АХАХАХАХА ДОЛБОЕБ !!!";
+    form.animate(
+      [{transform:"translateX(-4px)"},{transform:"translateX(4px)"},{transform:"translateX(0)"}],
+      {duration:180}
+    );
+  }
+});
+</script>
+</body>
+</html>
