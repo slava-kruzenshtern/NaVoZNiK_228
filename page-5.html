@@ -29,12 +29,18 @@ justify-content:center;padding:30px}
   background:#080808;
   box-shadow:0 0 35px rgba(255,255,255,.025)}
 
+.line{
+  height:2px;
+  background:#383838;
+  margin:12px 0 12px}
+
 .prompt-1{
   text-align:center;
-  color:#777;
-  font-size:20px;
-  line-height:1.8;
-  margin-bottom:25px}
+  color:#aaa;
+  font-size:17px;
+  line-height:1.5;
+  margin-top:20px;
+  margin-bottom:10px}
 
 .prompt-2{
   text-align:center;
@@ -42,18 +48,34 @@ justify-content:center;padding:30px}
   font-size:22px;
   font-weight: 700;
   letter-spacing:1px;
-  line-height:1.8;
+  line-height:1;
   margin-bottom:10px}
+
+.citata {
+  margin-bottom: 10px;
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: left;}
+.autor {
+  margin-bottom: 10px;
+  color: #777;
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: right;}
 
 .text-box {
   border: 2px solid #292929;
   background: #030303;
-  padding: 20px 25px;
-  margin-bottom: 25px;
+  padding: 10px 10px;
+  margin-bottom: -2px;
   color: #888;
-  font-size: 17px;
-  line-height: 1.2;
+  font-size: 13px;
+  line-height: 1.4;
   text-align: center;}
+.highlight {
+    color: red;
+    font-weight: 700;}
 
 .footer{text-align:center;
   margin-top:38px;
@@ -64,10 +86,23 @@ justify-content:center;padding:30px}
 .puzzle-image 
   {display: flex;
   justify-content: center;
-  margin: 30px auto;}
+  margin: 3px auto;
+  margin-bottom: 15px}
 .puzzle-image img 
   {width: 100px;
   max-width: 90%;
+  height: auto;
+  display: block;
+  box-sizing: border-box;}
+
+.lineyka
+  {display: flex;
+  justify-content: center;
+  margin: 3px auto;
+  margin-bottom: 25px}
+.lineyka img 
+  {width: 300px;
+  max-width: 99%;
   height: auto;
   display: block;
   box-sizing: border-box;}
@@ -109,11 +144,46 @@ button:hover{background:#ccc}
     ЗАГАДКА №5
   </div>
 
-<div class="text-box">
-    Ну тут типа загадка будет какая-то.<br>
-    Че написать пока хуй знает.<br>
-    Давайте думать, подсказывайте.
+<div class="line"></div>
+
+<div class="citata">
+    «The end is where we start from»
 </div>
+<div class="autor">
+    — T.S. Eliot, «Little Gidding», 1942
+</div>
+
+<div class="line"></div>
+
+<div class="text-box">
+    y=3(x+#)<br>\left\{-# ≤ x ≤ -#\right\}
+</div>
+<div class="text-box">
+    y=x<br>\left\{# ≤ x ≤ #\right\}
+</div>
+<div class="text-box">
+    y=-#<br>\left\{-# ≤ x ≤ -#\right\}
+</div>
+<div class="text-box">
+    r=a-b\theta<br>\left\{-# ≤ \theta ≤ 0\right\}
+</div>
+
+
+<script>
+document.querySelectorAll(".text-box").forEach(block => {
+    block.innerHTML = block.innerHTML.replace(/#/g, '<span class="highlight">?</span>');
+});
+</script>
+
+
+<div class="prompt-1">
+    НАЙДИ НЕИЗВЕСТНОЕ.<br>
+    УЗРИ <span style="color:#67b343;">СОКРЫТОЕ.</span>
+</div>
+
+<div class="lineyka">
+  <a href="https://www.desmos.com/calculator?lang=ru" target="_blank">
+  <img src="./images/lineyka.png"></a></div>
 
   <form id="gate">
     <div class="fields">
@@ -139,7 +209,7 @@ button:hover{background:#ccc}
 // CHANGE THE FIVE PASSWORDS HERE
 // ============================================
 const KEYS = [
-  "555"
+  "КОНОХА"
 ];
 
 const form = document.getElementById("gate");
