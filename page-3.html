@@ -64,14 +64,25 @@ justify-content:center;padding:30px}
   text-align: right;}
 
 .text-box {
-  border: 2px solid #292929;
-  background: #030303;
-  padding: 20px 25px;
-  margin-bottom: 25px;
-  color: #888;
-  font-size: 17px;
-  line-height: 1.2;
-  text-align: center;}
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: #030303;
+    padding: 10px 1px;
+    margin-bottom: 15px;
+
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: left;}
+.side-image {
+    width: 120px;
+    height: auto;
+    flex-shrink: 0;}
+.text-content {
+    flex: 1;}
+
 
 .footer{text-align:center;
   margin-top:38px;
@@ -131,18 +142,24 @@ button:hover{background:#ccc}
 <div class="line"></div>
 
 <div class="citata">
-    «Какая-то глубокая пиздец цитата»
+    «...Обезумевший от горя Орфей умолял лодочника Харона 
+    снова переправить его через реку Стикс, но тот ответил непреклонным отказом.»
 </div>
 <div class="autor">
-    — Автор, когда пизданул
+    — Мифы Древней Греции
 </div>
 
 <div class="line"></div>
 
 <div class="text-box">
-    Ну тут типа загадка будет какая-то.<br>
-    Че написать пока хуй знает.<br>
-    Давайте думать, подсказывайте.
+    <img src="./images/haron.jpg" class="side-image">
+
+    <div class="text-content">
+      В этих водах тебя никто не услышит -  
+      <span style="color:#eee;font-weight: 700">здесь нет связи</span> с миром живых.<br>
+      Лишь адский лодочник способен переправить тебя на другой берег.<br>
+      Найдешь ли ты достойную для него <span style="color:#eee;font-weight: 700">плату</span>?
+    </div>
 </div>
 
   <form id="gate">
@@ -169,7 +186,7 @@ button:hover{background:#ccc}
 // CHANGE THE FIVE PASSWORDS HERE
 // ============================================
 const KEYS = [
-  "333"
+  "ДЕПОЗИТ"
 ];
 
 const form = document.getElementById("gate");
