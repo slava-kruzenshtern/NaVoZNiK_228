@@ -36,11 +36,10 @@ justify-content:center;padding:30px}
 
 .prompt-1{
   text-align:center;
-  color:#aaa;
-  font-size:17px;
-  line-height:1.5;
-  margin-top:20px;
-  margin-bottom:10px}
+  color:#777;
+  font-size:20px;
+  line-height:1.8;
+  margin-bottom:25px}
 
 .prompt-2{
   text-align:center;
@@ -67,15 +66,12 @@ justify-content:center;padding:30px}
 .text-box {
   border: 2px solid #292929;
   background: #030303;
-  padding: 10px 10px;
-  margin-bottom: -2px;
-  color: #999;
-  font-size: 18px;
-  line-height: 1.4;
+  padding: 20px 25px;
+  margin-bottom: 25px;
+  color: #888;
+  font-size: 17px;
+  line-height: 1.2;
   text-align: center;}
-.highlight {
-    color: red;
-    font-weight: 700;}
 
 .footer{text-align:center;
   margin-top:38px;
@@ -91,18 +87,6 @@ justify-content:center;padding:30px}
 .puzzle-image img 
   {width: 100px;
   max-width: 90%;
-  height: auto;
-  display: block;
-  box-sizing: border-box;}
-
-.lineyka
-  {display: flex;
-  justify-content: center;
-  margin: 3px auto;
-  margin-bottom: 25px}
-.lineyka img 
-  {width: 300px;
-  max-width: 99%;
   height: auto;
   display: block;
   box-sizing: border-box;}
@@ -147,43 +131,18 @@ button:hover{background:#ccc}
 <div class="line"></div>
 
 <div class="citata">
-    «The end is where we start from»
+    «Один победитель, сорок два лузера»
 </div>
 <div class="autor">
-    — T.S. Eliot, «Little Gidding», 1942
+    — Молния Маккуин
 </div>
 
 <div class="line"></div>
 
 <div class="text-box">
-    y=3(x+#)  {-# ≤ x ≤ -#}
+     <span style="color:#aaa;font-size:21px; font-weight: 700;letter-spacing:2px">ВСЕ ПРОСТО!</span><br>
+    Для детей от 3-х лет!<br>
 </div>
-<div class="text-box">
-    y=x  {# ≤ x ≤ #}
-</div>
-<div class="text-box">
-    y=-#  {-# ≤ x ≤ -#}
-</div>
-<div class="text-box">
-    r=a-bθ  {-# ≤ θ ≤ #}
-</div>
-
-
-<script>
-document.querySelectorAll(".text-box").forEach(block => {
-    block.innerHTML = block.innerHTML.replace(/#/g, '<span class="highlight">?</span>');
-});
-</script>
-
-
-<div class="prompt-1">
-    НАЙДИ НЕИЗВЕСТНОЕ.<br>
-    УЗРИ <span style="color:#67b343;">СОКРЫТОЕ.</span>
-</div>
-
-<div class="lineyka">
-  <a href="https://www.desmos.com/calculator/s60mqvyp85?lang=ru" target="_blank">
-  <img src="./images/lineyka.png"></a></div>
 
   <form id="gate">
     <div class="fields">
@@ -209,7 +168,7 @@ document.querySelectorAll(".text-box").forEach(block => {
 // CHANGE THE FIVE PASSWORDS HERE
 // ============================================
 const KEYS = [
-  "КОНОХА"
+  "ВАЗАП МАБОЙ"
 ];
 
 const form = document.getElementById("gate");
@@ -226,7 +185,7 @@ form.addEventListener("submit", function(e){
 
   if(correct){
     status.className = "success";
-    status.textContent = "ДА ТЫ ЗАЕБАЛ !!!";
+    status.textContent = "КЧАУ !!!";
     setTimeout(() => {
       window.location.href = "the-end.html";
     }, 1000);
