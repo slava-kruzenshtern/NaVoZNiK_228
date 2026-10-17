@@ -373,30 +373,25 @@ body {
   background-color: #050505;
 }
 
+/* Геометрия рисуется на фиксированном слое под контентом */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
-  opacity: 0.22;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800' fill='none'%3E%3Cg stroke='%23808080' stroke-width='1'%3E%3Cpath d='M400 80 L720 265 L720 535 L400 720 L80 535 L80 265 Z'/%3E%3Cpath d='M400 145 L664 298 L664 502 L400 655 L136 502 L136 298 Z'/%3E%3Cpath d='M400 80 V720 M80 265 L720 535 M720 265 L80 535'/%3E%3Ccircle cx='400' cy='400' r='220'/%3E%3Ccircle cx='400' cy='400' r='145'/%3E%3Cpath d='M400 245 L535 478 L265 478 Z M400 555 L265 322 L535 322 Z'/%3E%3C/g%3E%3Cg stroke='%23a0a0a0' stroke-width='1'%3E%3Cpath d='M0 160 H170 M630 640 H800 M160 0 V170 M640 630 V800'/%3E%3Cpath d='M0 0 L170 170 M630 630 L800 800 M800 0 L630 170 M170 630 L0 800'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: min(100vw, 900px) min(100vw, 900px);
+  opacity: 0.32;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800' fill='none'%3E%3Cg stroke='%23a0a0a0' stroke-width='1.5'%3E%3Cpath d='M400 55 L745 255 L745 545 L400 745 L55 545 L55 255 Z'/%3E%3Cpath d='M400 125 L685 290 L685 510 L400 675 L115 510 L115 290 Z'/%3E%3Cpath d='M400 55 V745 M55 255 L745 545 M745 255 L55 545'/%3E%3Ccircle cx='400' cy='400' r='245'/%3E%3Ccircle cx='400' cy='400' r='165'/%3E%3Cpath d='M400 235 L543 483 L257 483 Z M400 565 L257 317 L543 317 Z'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(rgba(170,170,170,.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(170,170,170,.16) 1px, transparent 1px);
+  background-repeat: no-repeat, repeat, repeat;
+  background-position: center, center, center;
+  background-size: min(100vw, 900px) min(100vw, 900px), 48px 48px, 48px 48px;
 }
 
 body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.08;
-  background-image:
-    linear-gradient(rgba(150, 150, 150, 0.22) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(150, 150, 150, 0.22) 1px, transparent 1px);
-  background-size: 48px 48px;
+  content: none;
 }
 
 .wrap,
@@ -407,12 +402,7 @@ body::after {
 
 @media (max-width: 500px) {
   body::before {
-    opacity: 0.28;
-    background-size: 125vw 125vw;
-  }
-
-  body::after {
-    opacity: 0.11;
-    background-size: 36px 36px;
+    opacity: 0.55;
+    background-size: 125vw 125vw, 36px 36px, 36px 36px;
   }
 }
