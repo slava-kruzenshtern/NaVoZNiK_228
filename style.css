@@ -440,3 +440,48 @@ body::after {
     animation: none !important;
   }
 }
+
+
+/* Случайные экранные глитч-полосы */
+.glitch-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glitch-strip {
+  position: absolute;
+  height: var(--strip-height, 3px);
+  left: var(--strip-left, 0);
+  top: var(--strip-top, 50%);
+  width: var(--strip-width, 40%);
+  opacity: 0;
+  background: rgba(235, 245, 235, 0.8);
+  box-shadow: 0 0 5px rgba(100, 255, 140, 0.35);
+  animation: screen-glitch-flash var(--strip-duration, 120ms) steps(1, end) forwards;
+}
+
+.glitch-strip.red {
+  background: rgba(255, 35, 45, 0.8);
+  box-shadow: 0 0 5px rgba(255, 35, 45, 0.45);
+}
+
+.glitch-strip.green {
+  background: rgba(70, 255, 125, 0.8);
+  box-shadow: 0 0 5px rgba(70, 255, 125, 0.4);
+}
+
+@keyframes screen-glitch-flash {
+  0% { opacity: 0; transform: translateX(0); }
+  12% { opacity: 0.85; transform: translateX(0); }
+  28% { opacity: 0.3; transform: translateX(var(--strip-shift, 4px)); }
+  43% { opacity: 0.95; transform: translateX(calc(var(--strip-shift, 4px) * -1)); }
+  62% { opacity: 0.55; transform: translateX(2px); }
+  100% { opacity: 0; transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch-layer { display: none; }
+}
