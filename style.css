@@ -365,7 +365,7 @@ button:hover {
   }
 }
 
-/* Атмосфера Cicada: слабый цифровой шум и редкие помехи */
+/* Статичная геометрия вместо глитча и анимаций */
 body {
   position: relative;
   isolation: isolate;
@@ -373,199 +373,46 @@ body {
   background-color: #050505;
 }
 
-/* Статичная текстура шума поверх чёрного фона */
 body::before {
   content: "";
   position: fixed;
-  inset: -50%;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.075;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
-  transform: translateZ(0);
+  opacity: 0.22;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800' fill='none'%3E%3Cg stroke='%23808080' stroke-width='1'%3E%3Cpath d='M400 80 L720 265 L720 535 L400 720 L80 535 L80 265 Z'/%3E%3Cpath d='M400 145 L664 298 L664 502 L400 655 L136 502 L136 298 Z'/%3E%3Cpath d='M400 80 V720 M80 265 L720 535 M720 265 L80 535'/%3E%3Ccircle cx='400' cy='400' r='220'/%3E%3Ccircle cx='400' cy='400' r='145'/%3E%3Cpath d='M400 245 L535 478 L265 478 Z M400 555 L265 322 L535 322 Z'/%3E%3C/g%3E%3Cg stroke='%23a0a0a0' stroke-width='1'%3E%3Cpath d='M0 160 H170 M630 640 H800 M160 0 V170 M640 630 V800'/%3E%3Cpath d='M0 0 L170 170 M630 630 L800 800 M800 0 L630 170 M170 630 L0 800'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: min(100vw, 900px) min(100vw, 900px);
 }
 
-/* Едва заметная движущаяся полоса сканирования */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: 2;
+  z-index: 0;
   pointer-events: none;
-  opacity: 0.13;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 3px,
-    rgba(150, 190, 150, 0.09) 4px,
-    transparent 5px
-  );
-  background-size: 100% 5px;
-  animation: scanline-drift 14s linear infinite;
+  opacity: 0.08;
+  background-image:
+    linear-gradient(rgba(150, 150, 150, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(150, 150, 150, 0.22) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
-/* Контент всегда поверх текстуры */
 .wrap,
 .box {
   position: relative;
   z-index: 1;
 }
 
-/* Редкое мерцание — без постоянного дрожания текста */
-.prompt-2,
-.logo,
-.title {
-  animation: terminal-flicker 9s steps(1, end) infinite;
-}
-
-.line {
-  animation: line-signal 7s ease-in-out infinite;
-}
-
-.field:focus-within {
-  border-color: #718b71;
-  box-shadow: 0 0 0 1px rgba(100, 160, 100, 0.12),
-              0 0 12px rgba(70, 130, 70, 0.08);
-}
-
-input:focus {
-  caret-color: #91bd91;
-}
-
-@keyframes scanline-drift {
-  from { background-position: 0 0; }
-  to { background-position: 0 40px; }
-}
-
-@keyframes terminal-flicker {
-  0%, 18%, 20%, 62%, 64%, 100% {
-    opacity: 1;
-    text-shadow: none;
-  }
-  19% {
-    opacity: 0.94;
-    text-shadow: 1px 0 rgba(120, 180, 120, 0.22);
-  }
-  63% {
-    opacity: 0.97;
-    text-shadow: -1px 0 rgba(120, 180, 120, 0.18);
-  }
-}
-
-@keyframes line-signal {
-  0%, 88%, 90%, 100% { opacity: 1; }
-  89% { opacity: 0.72; }
-}
-
-/* Уважать системную настройку уменьшения анимации */
-@media (prefers-reduced-motion: reduce) {
-  body::after,
-  .prompt-2,
-  .logo,
-  .title,
-  .line {
-    animation: none !important;
-  }
-
-  .field {
-    transition: none;
-  }
-}
-
-/* На небольших экранах шум ещё слабее, чтобы текст оставался чётким */
 @media (max-width: 500px) {
   body::before {
-    opacity: 0.05;
+    opacity: 0.13;
+    background-size: 115vw 115vw;
   }
 
   body::after {
-    opacity: 0.08;
-  }
-}
-
-
-
-/* Stronger glitch atmosphere */
-body::before{opacity:.17;background-size:110px 110px;animation:noise-jitter .22s steps(2,end) infinite}
-body::after{opacity:.24;background-image:linear-gradient(to bottom,transparent 0%,transparent 43%,rgba(120,255,150,.10) 43.2%,rgba(120,255,150,.10) 43.7%,transparent 44.1%,transparent 71%,rgba(255,255,255,.07) 71.2%,transparent 71.8%),repeating-linear-gradient(to bottom,transparent 0,transparent 2px,rgba(180,220,180,.16) 3px,transparent 4px);background-size:100% 100%,100% 4px;animation:scanline-drift 5s linear infinite,screen-interference 8s steps(1,end) infinite}
-.prompt-2,.logo,.title{animation:terminal-flicker 5s steps(1,end) infinite,text-glitch 7s steps(1,end) infinite}
-.line{animation:line-signal 4s steps(1,end) infinite}
-@keyframes noise-jitter{0%{background-position:0 0}25%{background-position:-17px 9px}50%{background-position:12px -13px}75%{background-position:5px 17px}100%{background-position:-9px -4px}}
-@keyframes screen-interference{0%,18%,19%,52%,53%,100%{opacity:.24}18.5%,52.5%{opacity:.42}}
-@keyframes text-glitch{0%,27%,28%,71%,72%,100%{transform:translateX(0);text-shadow:none;filter:none}27.3%{transform:translateX(2px);text-shadow:-2px 0 rgba(255,40,40,.7),2px 0 rgba(60,255,120,.7);filter:contrast(1.3)}27.8%{transform:translateX(-2px);text-shadow:2px 0 rgba(255,40,40,.55),-2px 0 rgba(60,255,120,.65)}71.3%{transform:translateX(1px);text-shadow:-1px 0 rgba(255,40,40,.6),1px 0 rgba(60,255,120,.65)}}
-@media(max-width:500px){body::before{opacity:.12}body::after{opacity:.19}}
-@media(prefers-reduced-motion:reduce){body::before,body::after,.prompt-2,.logo,.title,.line{animation:none!important}}
-
-
-/* Visible CRT / glitch overlay */
-body::before {
-  z-index: 5;
-  inset: 0;
-  opacity: .22;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-  background-size: 160px 160px;
-  animation: hard-noise .18s steps(2,end) infinite;
-  mix-blend-mode: screen;
-}
-
-body::after {
-  z-index: 6;
-  opacity: .34;
-  background-image:
-    repeating-linear-gradient(to bottom, transparent 0 2px, rgba(150,255,170,.20) 3px, transparent 4px),
-    linear-gradient(to bottom, transparent 0 14%, rgba(255,255,255,.08) 14.3%, transparent 15% 48%, rgba(255,30,30,.10) 48.4%, transparent 49% 79%, rgba(100,255,150,.10) 79.3%, transparent 80%);
-  background-size: 100% 4px, 100% 100%;
-  animation: crt-roll 4s linear infinite, glitch-flash 6s steps(1,end) infinite;
-}
-
-.wrap, .box {
-  z-index: 1;
-}
-
-@keyframes hard-noise {
-  0% { background-position: 0 0; }
-  20% { background-position: -35px 18px; }
-  40% { background-position: 20px -27px; }
-  60% { background-position: 45px 8px; }
-  80% { background-position: -18px -40px; }
-  100% { background-position: 12px 25px; }
-}
-
-@keyframes crt-roll {
-  0% { background-position: 0 0, 0 -100vh; }
-  100% { background-position: 0 40px, 0 100vh; }
-}
-
-@keyframes glitch-flash {
-  0%, 9%, 10%, 47%, 48%, 100% { opacity: .34; }
-  9.3% { opacity: .72; }
-  9.6% { opacity: .20; }
-  47.3% { opacity: .62; }
-  47.6% { opacity: .28; }
-}
-
-.logo, .prompt-2, .title {
-  animation: terminal-flicker 3s steps(1,end) infinite, text-glitch 5s steps(1,end) infinite;
-}
-
-@keyframes text-glitch {
-  0%, 21%, 22%, 63%, 64%, 100% { transform: translate(0); text-shadow: none; }
-  21.2% { transform: translateX(3px); text-shadow: -3px 0 #ff3030, 3px 0 #50ff80; }
-  21.5% { transform: translateX(-2px); text-shadow: 2px 0 #ff3030, -2px 0 #50ff80; }
-  21.8% { transform: translateX(1px); text-shadow: -1px 0 #ff3030, 1px 0 #50ff80; }
-  63.2% { transform: translateX(-3px); text-shadow: 3px 0 #ff3030, -3px 0 #50ff80; }
-  63.5% { transform: translateX(0); text-shadow: none; }
-}
-
-@media (max-width: 500px) {
-  body::before { opacity: .16; }
-  body::after { opacity: .25; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body::before, body::after, .logo, .prompt-2, .title, .line {
-    animation: none !important;
+    opacity: 0.05;
+    background-size: 36px 36px;
   }
 }
