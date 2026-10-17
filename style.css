@@ -202,7 +202,7 @@ button:hover {
 
 /* На главной уменьшаем расстояние от кнопки до нижней надписи */
 .page-home .footer {
-  margin-top: 1px;
+  margin-top: 25px;
 }
 
 .logo {
