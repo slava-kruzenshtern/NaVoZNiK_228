@@ -461,8 +461,11 @@ body::after {
 
 /* Короткие глитч-сдвиги только заголовкам */
 .logo,
+.subtitle,
 .prompt-2,
-.title {
+.title,
+.page-home .prompt-1 span,
+.page-1 .text-box span {
   animation: terminal-flicker 5s steps(1, end) infinite,
              text-glitch 7s steps(1, end) infinite;
 }
@@ -516,8 +519,11 @@ body::after {
 
 @media (prefers-reduced-motion: reduce) {
   .logo,
+  .subtitle,
   .prompt-2,
-  .title {
+  .title,
+  .page-home .prompt-1 span,
+  .page-1 .text-box span {
     animation: none !important;
   }
 }
