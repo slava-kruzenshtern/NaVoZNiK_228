@@ -239,6 +239,7 @@ button:hover {
   display: block;
   width: 100%;
   margin-top: 25px;
+  margin-bottom: 5px;
   padding: 15px;
   background: #aaa;
   color: #050505;
