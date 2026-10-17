@@ -467,7 +467,8 @@ body::after {
 .page-home .prompt-1 span,
 .page-home .footer,
 .page-1 .text-box span,
-.page-5 .text-box span {
+.page-5 .text-box span,
+.puzzle-image img {
   animation: terminal-flicker 5s steps(1, end) infinite,
              text-glitch 7s steps(1, end) infinite;
 }
@@ -527,7 +528,8 @@ body::after {
   .page-home .prompt-1 span,
   .page-home .footer,
   .page-1 .text-box span,
-  .page-5 .text-box span {
+  .page-5 .text-box span,
+  .puzzle-image img {
     animation: none !important;
   }
 }
