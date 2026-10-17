@@ -407,12 +407,12 @@ body::after {
 
 @media (max-width: 500px) {
   body::before {
-    opacity: 0.13;
-    background-size: 115vw 115vw;
+    opacity: 0.28;
+    background-size: 125vw 125vw;
   }
 
   body::after {
-    opacity: 0.05;
+    opacity: 0.11;
     background-size: 36px 36px;
   }
 }
