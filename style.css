@@ -364,3 +364,123 @@ button:hover {
     letter-spacing: 2px;
   }
 }
+
+/* Атмосфера Cicada: слабый цифровой шум и редкие помехи */
+body {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  background-color: #050505;
+}
+
+/* Статичная текстура шума поверх чёрного фона */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.075;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  transform: translateZ(0);
+}
+
+/* Едва заметная движущаяся полоса сканирования */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.13;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(150, 190, 150, 0.09) 4px,
+    transparent 5px
+  );
+  background-size: 100% 5px;
+  animation: scanline-drift 14s linear infinite;
+}
+
+/* Контент всегда поверх текстуры */
+.wrap,
+.box {
+  position: relative;
+  z-index: 1;
+}
+
+/* Редкое мерцание — без постоянного дрожания текста */
+.prompt-2,
+.logo,
+.title {
+  animation: terminal-flicker 9s steps(1, end) infinite;
+}
+
+.line {
+  animation: line-signal 7s ease-in-out infinite;
+}
+
+.field:focus-within {
+  border-color: #718b71;
+  box-shadow: 0 0 0 1px rgba(100, 160, 100, 0.12),
+              0 0 12px rgba(70, 130, 70, 0.08);
+}
+
+input:focus {
+  caret-color: #91bd91;
+}
+
+@keyframes scanline-drift {
+  from { background-position: 0 0; }
+  to { background-position: 0 40px; }
+}
+
+@keyframes terminal-flicker {
+  0%, 18%, 20%, 62%, 64%, 100% {
+    opacity: 1;
+    text-shadow: none;
+  }
+  19% {
+    opacity: 0.94;
+    text-shadow: 1px 0 rgba(120, 180, 120, 0.22);
+  }
+  63% {
+    opacity: 0.97;
+    text-shadow: -1px 0 rgba(120, 180, 120, 0.18);
+  }
+}
+
+@keyframes line-signal {
+  0%, 88%, 90%, 100% { opacity: 1; }
+  89% { opacity: 0.72; }
+}
+
+/* Уважать системную настройку уменьшения анимации */
+@media (prefers-reduced-motion: reduce) {
+  body::after,
+  .prompt-2,
+  .logo,
+  .title,
+  .line {
+    animation: none !important;
+  }
+
+  .field {
+    transition: none;
+  }
+}
+
+/* На небольших экранах шум ещё слабее, чтобы текст оставался чётким */
+@media (max-width: 500px) {
+  body::before {
+    opacity: 0.05;
+  }
+
+  body::after {
+    opacity: 0.08;
+  }
+}
+
