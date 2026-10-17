@@ -459,18 +459,53 @@ body::after {
   }
 }
 
-/* Короткие глитч-сдвиги только заголовкам */
-.logo,
-.subtitle,
-.prompt-2,
-.title,
-.page-home .prompt-1 span,
-.page-home .footer,
-.page-1 .text-box span,
-.page-5 .text-box span,
-.puzzle-image img {
+/* Глитчи запускаются с разными задержками, чтобы элементы дёргались вразнобой */
+.logo {
   animation: terminal-flicker 5s steps(1, end) infinite,
              text-glitch 7s steps(1, end) infinite;
+}
+
+.subtitle {
+  animation: terminal-flicker 6.7s steps(1, end) infinite -2.1s,
+             text-glitch 8.3s steps(1, end) infinite -3.4s;
+}
+
+.prompt-2 {
+  animation: terminal-flicker 7.1s steps(1, end) infinite -4.2s,
+             text-glitch 9.2s steps(1, end) infinite -1.7s;
+}
+
+.title {
+  animation: terminal-flicker 5.8s steps(1, end) infinite -3.1s,
+             text-glitch 7.6s steps(1, end) infinite -5.2s;
+}
+
+.page-home .prompt-1 span {
+  display: inline-block;
+  animation: terminal-flicker 6.2s steps(1, end) infinite -1.3s,
+             text-glitch 8.7s steps(1, end) infinite -4.6s;
+}
+
+.page-home .footer {
+  animation: terminal-flicker 7.4s steps(1, end) infinite -5.1s,
+             text-glitch 9.5s steps(1, end) infinite -2.8s;
+}
+
+.page-1 .text-box span {
+  display: inline-block;
+  animation: terminal-flicker 6.5s steps(1, end) infinite -2.7s,
+             text-glitch 8.1s steps(1, end) infinite -6.1s;
+}
+
+.page-5 .text-box span {
+  display: inline-block;
+  animation: terminal-flicker 7.8s steps(1, end) infinite -3.8s,
+             text-glitch 9.7s steps(1, end) infinite -1.2s;
+}
+
+.puzzle-image img {
+  animation: terminal-flicker 8.3s steps(1, end) infinite -4.7s,
+             text-glitch 10.1s steps(1, end) infinite -7.3s;
 }
 
 @keyframes terminal-flicker {
