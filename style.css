@@ -200,6 +200,11 @@ button:hover {
   box-shadow: 0 0 35px rgba(255, 255, 255, 0.025);
 }
 
+/* На главной уменьшаем расстояние от кнопки до нижней надписи */
+.page-home .footer {
+  margin-top: 19px;
+}
+
 .logo {
   color: #aaa;
   font-size: 35px;
