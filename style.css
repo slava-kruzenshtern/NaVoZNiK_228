@@ -465,7 +465,9 @@ body::after {
 .prompt-2,
 .title,
 .page-home .prompt-1 span,
-.page-1 .text-box span {
+.page-home .footer,
+.page-1 .text-box span,
+.page-5 .text-box span {
   animation: terminal-flicker 5s steps(1, end) infinite,
              text-glitch 7s steps(1, end) infinite;
 }
@@ -523,7 +525,9 @@ body::after {
   .prompt-2,
   .title,
   .page-home .prompt-1 span,
-  .page-1 .text-box span {
+  .page-home .footer,
+  .page-1 .text-box span,
+  .page-5 .text-box span {
     animation: none !important;
   }
 }
