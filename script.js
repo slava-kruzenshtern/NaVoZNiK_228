@@ -55,7 +55,7 @@
 
     function spawnGlitch() {
       // Иногда возникает короткая группа из нескольких полос.
-      const count = Math.random() < 0.22 ? 2 + Math.floor(Math.random() * 3) : 1;
+      const count = Math.random() < 0.38 ? 2 + Math.floor(Math.random() * 2) : 1;
 
       for (let i = 0; i < count; i++) {
         const strip = document.createElement("span");
@@ -63,8 +63,8 @@
         strip.className = "glitch-strip " + colors[Math.floor(Math.random() * colors.length)];
         strip.style.setProperty("--strip-top", (Math.random() * 100).toFixed(2) + "%");
         strip.style.setProperty("--strip-left", (Math.random() * 70).toFixed(2) + "%");
-        strip.style.setProperty("--strip-width", (8 + Math.random() * 82).toFixed(2) + "%");
-        strip.style.setProperty("--strip-height", (1 + Math.random() * 5).toFixed(1) + "px");
+        strip.style.setProperty("--strip-width", (5 + Math.random() * 50).toFixed(2) + "%");
+        strip.style.setProperty("--strip-height", (1 + Math.random() * 3).toFixed(1) + "px");
         strip.style.setProperty("--strip-shift", (-8 + Math.random() * 16).toFixed(1) + "px");
         strip.style.setProperty("--strip-duration", (65 + Math.random() * 130).toFixed(0) + "ms");
         layer.appendChild(strip);
@@ -72,10 +72,10 @@
       }
 
       // Нерегулярные паузы, чтобы эффект не выглядел цикличным.
-      window.setTimeout(spawnGlitch, 180 + Math.random() * 1100);
+      window.setTimeout(spawnGlitch, 450 + Math.random() * 1700);
     }
 
-    window.setTimeout(spawnGlitch, 350 + Math.random() * 900);
+    window.setTimeout(spawnGlitch, 500 + Math.random() * 1200);
   }
 
 })();
