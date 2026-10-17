@@ -378,9 +378,85 @@ body {
   background-color: #050505;
 }
 
+/* Лёгкий VHS-слой: линии развёртки и редкая полоса трекинга */
 body::before,
 body::after {
-  content: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+body::before {
+  z-index: 9998;
+  opacity: 0.13;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(210, 230, 220, 0.16) 0,
+      rgba(210, 230, 220, 0.16) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.015),
+      transparent 20%,
+      transparent 80%,
+      rgba(255, 255, 255, 0.015)
+    );
+}
+
+body::after {
+  z-index: 9999;
+  top: -15%;
+  bottom: auto;
+  height: 14%;
+  opacity: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(210, 235, 220, 0.015) 25%,
+    rgba(220, 245, 230, 0.10) 50%,
+    rgba(210, 235, 220, 0.025) 70%,
+    transparent
+  );
+  animation: vhs-tracking 11s steps(1, end) infinite;
+}
+
+@keyframes vhs-tracking {
+  0%, 8%, 100% {
+    top: -15%;
+    opacity: 0;
+  }
+  9% {
+    top: 12%;
+    opacity: 0.45;
+  }
+  10% {
+    top: 18%;
+    opacity: 0.25;
+  }
+  11% {
+    top: 22%;
+    opacity: 0;
+  }
+  48% {
+    top: 55%;
+    opacity: 0;
+  }
+  49% {
+    top: 58%;
+    opacity: 0.3;
+  }
+  50% {
+    top: 63%;
+    opacity: 0.12;
+  }
+  51% {
+    top: 68%;
+    opacity: 0;
+  }
 }
 
 /* Короткие глитч-сдвиги только заголовкам */
@@ -447,46 +523,6 @@ body::after {
 }
 
 
-/* Случайные экранные глитч-полосы */
-.glitch-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.glitch-strip {
-  position: absolute;
-  height: var(--strip-height, 3px);
-  left: var(--strip-left, 0);
-  top: var(--strip-top, 50%);
-  width: var(--strip-width, 40%);
-  opacity: 0;
-  background: rgba(235, 245, 235, 0.55);
-  box-shadow: 0 0 3px rgba(100, 255, 140, 0.22);
-  animation: screen-glitch-flash var(--strip-duration, 120ms) steps(1, end) forwards;
-}
-
-.glitch-strip.red {
-  background: rgba(255, 35, 45, 0.55);
-  box-shadow: 0 0 3px rgba(255, 35, 45, 0.28);
-}
-
-.glitch-strip.green {
-  background: rgba(70, 255, 125, 0.55);
-  box-shadow: 0 0 3px rgba(70, 255, 125, 0.25);
-}
-
-@keyframes screen-glitch-flash {
-  0% { opacity: 0; transform: translateX(0); }
-  12% { opacity: 0.65; transform: translateX(0); }
-  28% { opacity: 0.3; transform: translateX(var(--strip-shift, 4px)); }
-  43% { opacity: 0.7; transform: translateX(calc(var(--strip-shift, 4px) * -1)); }
-  62% { opacity: 0.35; transform: translateX(2px); }
-  100% { opacity: 0; transform: translateX(0); }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .glitch-layer { display: none; }
+  body::after { animation: none; }
 }
