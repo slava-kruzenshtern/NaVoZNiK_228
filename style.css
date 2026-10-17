@@ -458,27 +458,27 @@ body::after {
   top: var(--strip-top, 50%);
   width: var(--strip-width, 40%);
   opacity: 0;
-  background: rgba(235, 245, 235, 0.8);
-  box-shadow: 0 0 5px rgba(100, 255, 140, 0.35);
+  background: rgba(235, 245, 235, 0.55);
+  box-shadow: 0 0 3px rgba(100, 255, 140, 0.22);
   animation: screen-glitch-flash var(--strip-duration, 120ms) steps(1, end) forwards;
 }
 
 .glitch-strip.red {
-  background: rgba(255, 35, 45, 0.8);
-  box-shadow: 0 0 5px rgba(255, 35, 45, 0.45);
+  background: rgba(255, 35, 45, 0.55);
+  box-shadow: 0 0 3px rgba(255, 35, 45, 0.28);
 }
 
 .glitch-strip.green {
-  background: rgba(70, 255, 125, 0.8);
-  box-shadow: 0 0 5px rgba(70, 255, 125, 0.4);
+  background: rgba(70, 255, 125, 0.55);
+  box-shadow: 0 0 3px rgba(70, 255, 125, 0.25);
 }
 
 @keyframes screen-glitch-flash {
   0% { opacity: 0; transform: translateX(0); }
-  12% { opacity: 0.85; transform: translateX(0); }
+  12% { opacity: 0.65; transform: translateX(0); }
   28% { opacity: 0.3; transform: translateX(var(--strip-shift, 4px)); }
-  43% { opacity: 0.95; transform: translateX(calc(var(--strip-shift, 4px) * -1)); }
-  62% { opacity: 0.55; transform: translateX(2px); }
+  43% { opacity: 0.7; transform: translateX(calc(var(--strip-shift, 4px) * -1)); }
+  62% { opacity: 0.35; transform: translateX(2px); }
   100% { opacity: 0; transform: translateX(0); }
 }
 
