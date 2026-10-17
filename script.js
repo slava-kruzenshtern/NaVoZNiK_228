@@ -26,6 +26,17 @@
     );
   }
 
+  // Не даём кнопке перехватывать фокус у поля ввода на телефоне.
+  // Тогда клавиатура остаётся открытой при ошибочном ответе.
+  const submitButton = document.querySelector('#gate button[type="submit"]');
+  if (submitButton) {
+    submitButton.addEventListener("pointerdown", event => {
+      if (document.activeElement && document.activeElement.matches('#gate input')) {
+        event.preventDefault();
+      }
+    });
+  }
+
   inputs.forEach(input => {
     input.addEventListener("focus", () => {
       activeInput = input;
