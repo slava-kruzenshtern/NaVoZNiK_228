@@ -365,7 +365,7 @@ button:hover {
   }
 }
 
-/* Тёмная геометрическая текстура из Unsplash */
+/* Чёрный фон без текстур; глитч оставлен только на заголовках */
 body {
   position: relative;
   isolation: isolate;
@@ -373,32 +373,12 @@ body {
   background-color: #050505;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.24;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)),
-    url("https://images.unsplash.com/photo-1763075958748-9a0c9c8799c3?auto=format&fit=crop&fm=jpg&q=80&w=1800&h=2600");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
+body::before,
 body::after {
   content: none;
 }
 
-.wrap,
-.box {
-  position: relative;
-  z-index: 1;
-}
-
-/* Возвращаем короткие глитч-сдвиги только заголовкам */
+/* Короткие глитч-сдвиги только заголовкам */
 .logo,
 .prompt-2,
 .title {
@@ -450,20 +430,6 @@ body::after {
   71.7% {
     transform: translateX(0);
     text-shadow: none;
-  }
-}
-
-@media (max-width: 500px) {
-  body::before {
-    opacity: 0.30;
-    background-position: center center;
-    background-size: cover;
-  }
-
-  .logo,
-  .prompt-2,
-  .title {
-    animation-duration: 4.5s, 6s;
   }
 }
 
