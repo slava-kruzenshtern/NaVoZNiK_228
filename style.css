@@ -505,6 +505,12 @@ body::after {
 }
 
 /* Все изображения получают VHS-глитч; он заметнее и с отдельными сдвигами цветовых каналов. */
+.side-image[src$="haron.jpg"],
+.side-image[src$="taro-tower.jpg"] {
+  animation: none !important;
+  will-change: auto;
+}
+
 img {
   animation: image-flicker 5.4s steps(1, end) infinite,
              image-glitch 6.8s steps(1, end) infinite;
